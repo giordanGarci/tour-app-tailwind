@@ -1,33 +1,40 @@
 <div class="p-6 max-w-lg mx-auto bg-white shadow-lg rouded-lg mt-6">
     <h2 class="text-2x1 font-semibold text-gray-700 mb-4"> Nova categoria </h2>
-    
-    <form id="categoriaForm">
+
+    <form id="categoriaForm" [formGroup]="camposForm" (ngSubmit)="onSave()">
         <!-- campo nome -->
         <div class="mb-4">
             <label class="block text-gray-600 font-medium mb-2">Nome</label>
-            <input 
+            <input
                 type="text"
                 name="nome"
+                formControlName="nome"
                 placeholder="Nome da categoria"
                 class="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-blue-400"
                 required
                 />
-            <span class="text-red-500 text-sm">
-                Campo obrigatório
-            </span>
+                @if(isFieldInvalid('nome')){
+                  <span class="text-red-500 text-sm">
+                      Campo obrigatório
+                  </span>}
         </div>
         <!-- campo descricao -->
         <div class="mb-4">
             <label class="block text-gray-600 font-medium mb-2">Descrição</label>
-            <textarea 
+            <textarea
                 name="descricao"
                 placeholder="Descrição da categoria"
                 class="w-full p-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-blue-400"
                 rows="4"
+                formControlName="descricao"
                 id="descricao"
                 ></textarea>
+                @if(isFieldInvalid('descricao')){
+                  <span class="text-red-500 text-sm" >
+                    Campo obrigatório
+                  </span>}
         </div>
-        <button 
+        <button
             type="submit"
             class="w-full bg-blue-600 text-white p-3 rounded font-semibold shadow hover:bg-blue-700 transition-colors"
             >
