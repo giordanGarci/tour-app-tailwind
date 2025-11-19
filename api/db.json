@@ -1,0 +1,14 @@
+{
+  "categorias": [
+    {
+      "id": 1,
+      "nome": "Aventura",
+      "descricao": "Categorias de viagens de aventura, como trilhas, escaladas e esportes radicais."
+    },
+    {
+      "id": 2,
+      "nome": "Cultural",
+      "descricao": "Categorias de viagens culturais, incluindo visitas a museus, sítios históricos e eventos culturais."
+    }
+  ]
+}

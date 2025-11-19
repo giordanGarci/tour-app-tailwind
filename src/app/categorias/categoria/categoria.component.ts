@@ -18,8 +18,12 @@ export class CategoriaComponent {
   }
 
   onSave() {
-    console.log(this.camposForm.value);
-    console.log(this.camposForm.valid);
+    this.camposForm.markAllAsTouched();
+
+    if (this.camposForm.valid) {
+      console.log(this.camposForm.value);
+      console.log(this.camposForm.valid);
+    }
   }
 
   isFieldInvalid(campo: string) : boolean {
