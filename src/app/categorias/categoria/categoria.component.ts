@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CategoriaService } from '../categoria.service';
+import { Categoria } from '../categoria';
 
 @Component({
   selector: 'app-categoria',
@@ -10,7 +12,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class CategoriaComponent {
   camposForm: FormGroup;
 
-  constructor() {
+  constructor(private categoriaService: CategoriaService) {
     this.camposForm = new FormGroup({
       nome: new FormControl('', Validators.required),
       descricao: new FormControl('', Validators.required)
@@ -21,9 +23,43 @@ export class CategoriaComponent {
     this.camposForm.markAllAsTouched();
 
     if (this.camposForm.valid) {
-      console.log(this.camposForm.value);
-      console.log(this.camposForm.valid);
+      this.categoriaService
+        .save(this.camposForm.value).subscribe(
+          {
+            next: (categoria) => {
+              this.camposForm.reset();
+              console.log(categoria);
+            },
+            error: (error) => {
+              console.log(error);
+            }
+          }
+      );
     }
+  }
+
+  getAll() {
+    this.categoriaService.getAll().subscribe((categorias) => {
+      console.log(categorias);
+    });
+  }
+
+  getById(id: number) {
+    this.categoriaService.getById(id).subscribe((categoria) => {
+      console.log(categoria);
+    });
+  }
+
+  update(categoria: Categoria) {
+    this.categoriaService.update(categoria).subscribe((categoria) => {
+      console.log(categoria);
+    });
+  }
+
+  delete(id: number) {
+    this.categoriaService.delete(id).subscribe(() => {
+      console.log('Categoria deletada com sucesso');
+    });
   }
 
   isFieldInvalid(campo: string) : boolean {
