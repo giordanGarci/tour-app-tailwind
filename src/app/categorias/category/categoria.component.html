@@ -35,10 +35,12 @@
                   </span>}
         </div>
         <button
-            type="submit"
-            class="w-full bg-blue-600 text-white p-3 rounded font-semibold shadow hover:bg-blue-700 transition-colors"
-            >
-            Salvar
+          [disabled]="fieldsForm.invalid"
+          type="submit"
+          [class.opacity-50]="fieldsForm.invalid"
+          class="w-full bg-blue-600 text-white p-3 rounded font-semibold shadow hover:bg-blue-700 transition-colors mt-6"
+          >
+          Salvar
         </button>
     </form>
 </div>

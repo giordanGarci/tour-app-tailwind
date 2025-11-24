@@ -12,11 +12,11 @@ import { CategoriaService } from '../../categorias/category.service';
 })
 export class placeComponent implements OnInit {
 
-  camposForm!: FormGroup;
+  fieldsForm!: FormGroup;
   categories: Category[] = [];
 
   constructor(private categoriaService: CategoriaService) {
-    this.camposForm = new FormGroup({
+    this.fieldsForm = new FormGroup({
       name: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
@@ -34,11 +34,11 @@ export class placeComponent implements OnInit {
   }
 
   onSave() {
-    console.log(this.camposForm.value);
+    console.log(this.fieldsForm.value);
   }
 
   isFieldInvalid(campo: string) : boolean {
-      const field = this.camposForm.get(campo);
+      const field = this.fieldsForm.get(campo);
       return (field?.invalid && field?.touched && field?.errors?.['required']) || false;
   }
 
