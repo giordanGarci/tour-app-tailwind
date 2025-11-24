@@ -29,7 +29,6 @@ export class placeComponent implements OnInit {
   ngOnInit(): void {
     this.categoriaService.getAll().subscribe((categories) => {
       this.categories = categories;
-      console.log(this.categories);
     });
   }
 

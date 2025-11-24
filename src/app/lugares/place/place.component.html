@@ -26,10 +26,12 @@
           formControlName="category"
           class="w-full p-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-blue-400"
         >
-          <option value="" disabled selected>Selecione a categoria</option>
-          <option *ngFor="let category of categories" [value]="category.id">
-            {{ category.name }}
-          </option>
+          <option value="" disabled selected>Selecione uma categoria</option>
+          @for (category of categories; track category.id) {
+            <option [value]="category.name">
+              {{ category.name }}
+            </option>
+          }
         </select>
 
     </div>
@@ -67,7 +69,7 @@
     </div>
 
     <div>
-        <label class="block text-gray-600 font-medium mb-2 mt-4">URL da Foto</label>
+        <label class="block text-gray-600 font-medium mb-2 mt-4">Foto</label>
         <input
             type="text"
             name="urlPhoto"
@@ -84,18 +86,25 @@
 
     <div>
         <label class="block text-gray-600 font-medium mb-2 mt-4">Avaliação</label>
-        <input
-            type="number"
-            name="rating"
+        <select
+          name="rating"
             formControlName="rating"
             placeholder="Avaliação de 1 a 5"
             class="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-blue-400"
             required
-            />
-            @if(isFieldInvalid('rating')){
-              <span class="text-red-500 text-sm">
-                  Campo obrigatório
-              </span>}
+            >
+            <option value="" disabled selected>Selecione uma avaliação</option>
+            <option [value]="1">1 - Ruim</option>
+            <option [value]="2">2 - Regular</option>
+            <option [value]="3">3 - Bom</option>
+            <option [value]="4">4 - Muito Bom</option>
+            <option [value]="5">5 - Excelente</option>
+
+          </select>
+          @if(isFieldInvalid('rating')){
+            <span class="text-red-500 text-sm">
+                Campo obrigatório
+            </span>}
     </div>
 
     <button
