@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CategoriasRoutingModule } from './categorias-routing.module';
-import { CategoriaComponent } from './categoria/categoria.component';
+import { CategoriasRoutingModule } from './categories-routing.module';
+import { CategoriaComponent } from './category/categoria.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 

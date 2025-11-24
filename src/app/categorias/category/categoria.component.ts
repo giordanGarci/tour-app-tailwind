@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CategoriaService } from '../categoria.service';
-import { Categoria } from '../categoria';
+import { CategoriaService } from '../category.service';
+import { Category } from '../category';
 
 @Component({
   selector: 'app-categoria',
@@ -10,24 +10,24 @@ import { Categoria } from '../categoria';
   styleUrl: './categoria.component.scss'
 })
 export class CategoriaComponent {
-  camposForm: FormGroup;
+  fieldsForm: FormGroup;
 
   constructor(private categoriaService: CategoriaService) {
-    this.camposForm = new FormGroup({
-      nome: new FormControl('', Validators.required),
-      descricao: new FormControl('', Validators.required)
+    this.fieldsForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required)
     });
   }
 
   onSave() {
-    this.camposForm.markAllAsTouched();
+    this.fieldsForm.markAllAsTouched();
 
-    if (this.camposForm.valid) {
+    if (this.fieldsForm.valid) {
       this.categoriaService
-        .save(this.camposForm.value).subscribe(
+        .save(this.fieldsForm.value).subscribe(
           {
             next: (categoria) => {
-              this.camposForm.reset();
+              this.fieldsForm.reset();
               console.log(categoria);
             },
             error: (error) => {
@@ -50,7 +50,7 @@ export class CategoriaComponent {
     });
   }
 
-  update(categoria: Categoria) {
+  update(categoria: Category) {
     this.categoriaService.update(categoria).subscribe((categoria) => {
       console.log(categoria);
     });
@@ -60,10 +60,10 @@ export class CategoriaComponent {
     this.categoriaService.delete(id).subscribe(() => {
       console.log('Categoria deletada com sucesso');
     });
-  }
+    }
 
   isFieldInvalid(campo: string) : boolean {
-    const field = this.camposForm.get(campo);
-    return (field?.invalid && field?.touched && field?.errors?.['required']) || false;
+      const field = this.fieldsForm.get(campo);
+      return (field?.invalid && field?.touched && field?.errors?.['required']) || false;
   }
 }

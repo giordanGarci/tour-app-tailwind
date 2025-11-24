@@ -1,14 +1,34 @@
 {
   "categorias": [
     {
-      "id": 1,
-      "nome": "Aventura",
-      "descricao": "Categorias de viagens de aventura, como trilhas, escaladas e esportes radicais."
+      "id": "1",
+      "name": "Aventura",
+      "description": "Categorias de viagens de aventura, como trilhas, escaladas e esportes radicais."
     },
     {
-      "id": 2,
-      "nome": "Cultural",
-      "descricao": "Categorias de viagens culturais, incluindo visitas a museus, sítios históricos e eventos culturais."
+      "id": "2",
+      "name": "Cultural",
+      "description": "Categorias de viagens culturais, incluindo visitas a museus, sítios históricos e eventos culturais."
+    },
+    {
+      "id": "3",
+      "name": "Praia",
+      "description": "Categorias de viagens para destinos de praia, com foco em relaxamento e atividades aquáticas."
+    },
+    {
+      "id": "4",
+      "name": "Gastronomia",
+      "description": "Categorias de viagens gastronômicas, explorando a culinária local e experiências culinárias."
+    },
+    {
+      "id": "5",
+      "name": "Natureza",
+      "description": "Categorias de viagens para destinos naturais, como parques nacionais, reservas naturais e ecoturismo."
+    },
+    {
+      "id": "6",
+      "name": "Luxo",
+      "description": "Categorias de viagens de luxo, com foco em acomodações e experiências exclusivas."
     }
   ]
 }
