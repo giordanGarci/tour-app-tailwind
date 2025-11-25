@@ -1,3 +1,41 @@
-<div class="p-6 max-w-lg mx-auto bg-white shadow-lg rounded-lg mt-6">
+<div class="w-full p-6">
+  <h1 class="text-2xl font-bold mb-6">Galeria de Lugares</h1>
 
+  <div class="text-1xl font-sm mb-1">Categorias</div>
+  <select class="border border-gray-300 rounded px-4 py-2 mb-6">
+    <option value="">Todas as Categorias</option>
+    @for (category of categories; track category.id) {
+      <option value="{{ category.id }}">{{ category.name }}</option>
+    }
+  </select>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    @for (place of places; track place.id) {
+
+      <div
+        class="bg-white rounded-xl shadow hover:shadow-lg transition p-4"
+      >
+        <img
+          [src]="place.urlPhoto"
+          alt="{{ place.name }}"
+          class="w-full h-48 object-cover rounded-lg"
+        />
+
+        <h2 class="text-lg font-semibold mt-3">{{ place.name }}</h2>
+
+        <p class="text-sm text-gray-500">
+          {{ place.category?.name }}
+        </p>
+
+        <p class="text-gray-700 text-sm mt-2 line-clamp-3">
+          {{ place.description }}
+        </p>
+
+        <div class="mt-3 flex items-center gap-1">
+          <span class="text-yellow-500 text-xl">★</span>
+          <span class="text-sm">{{ place.rating }}</span>
+        </div>
+      </div>
+    }
+  </div>
 </div>

@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl} from '@angular/forms';
 import { Category } from '../../categorias/category';
-import { CategoriaService } from '../../categorias/category.service';
-import { placeService } from '../place.service';
+import { CategoryService } from '../../categorias/category.service';
+import { PlaceService } from '../place.service';
 
 
 @Component({
   selector: 'app-place',
   standalone: false,
   templateUrl: './place.component.html',
-  styleUrl: './place.component.scss'
+  styleUrls: ['./place.component.scss']
 })
-export class placeComponent implements OnInit {
+export class PlaceComponent implements OnInit {
 
   fieldsForm!: FormGroup;
   categories: Category[] = [];
 
-  constructor(private categoriaService: CategoriaService, private placeService: placeService) {
+  constructor(private categoriaService: CategoryService, private service: PlaceService) {
     this.fieldsForm = new FormGroup({
       name: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
@@ -37,7 +37,7 @@ export class placeComponent implements OnInit {
     this.fieldsForm.markAllAsTouched();
 
     if (this.fieldsForm.valid) {
-      this.placeService
+      this.service
         .save(this.fieldsForm.value).subscribe(
           {
             next: (place) => {

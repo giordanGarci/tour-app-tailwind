@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class placeService {
+export class PlaceService {
 
   constructor(private http: HttpClient) { }
 
@@ -19,5 +19,10 @@ export class placeService {
   getAll() : Observable<Place[]> {
     return this.http.get<Place[]>(this.baseUrl);
   }
+
+  // getByCategory(category: string) : Observable<Place[]> {
+  //   const url = `${this.baseUrl}?categoria=${category}`;
+  //   return this.http.get<Place[]>(url);
+  // }
 
 }

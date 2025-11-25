@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CategoriaService } from '../category.service';
+import { CategoryService } from '../category.service';
 import { Category } from '../category';
 
 @Component({
@@ -12,7 +12,7 @@ import { Category } from '../category';
 export class CategoriaComponent {
   fieldsForm: FormGroup;
 
-  constructor(private categoriaService: CategoriaService) {
+  constructor(private categoriaService: CategoryService) {
     this.fieldsForm = new FormGroup({
       name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required)

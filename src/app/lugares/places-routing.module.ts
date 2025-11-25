@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { placeComponent } from './place/place.component';
+import { PlaceComponent } from './place/place.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: placeComponent,
+    component: PlaceComponent,
     pathMatch: 'full'
   }
 ];
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class placesRoutingModule { }
+export class PlacesRoutingModule { }
