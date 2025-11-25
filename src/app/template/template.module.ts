@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TemplateRoutingModule } from './template-routing.module';
 import { LayoutComponent } from './layout/layout.component';
 import { CategoriasModule } from '../categorias/categories.module';
+import { GalleryModule } from '../gallery/gallery.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CategoriasModule } from '../categorias/categories.module';
   imports: [
     CommonModule,
     TemplateRoutingModule,
-    CategoriasModule
+    CategoriasModule,
+    GalleryModule
   ]
 })
 export class TemplateModule { }

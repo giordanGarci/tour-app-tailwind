@@ -13,9 +13,14 @@ const routes: Routes = [
       },
       {
         path: "lugares",
-        loadChildren: () => import('../lugares/places.module').then(m => m.placesModule),
+        loadChildren: () => import('../lugares/places.module').then(m => m.PlacesModule),
         pathMatch: 'full'
       },
+      {
+        path: "galeria",
+        loadChildren: () => import('../gallery/gallery.module').then(m => m.GalleryModule),
+        pathMatch: 'full'
+      }
     ]
   }
 ]

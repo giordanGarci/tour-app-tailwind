@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl} from '@angular/forms';
 import { Category } from '../../categorias/category';
 import { CategoriaService } from '../../categorias/category.service';
+import { placeService } from '../place.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class placeComponent implements OnInit {
   fieldsForm!: FormGroup;
   categories: Category[] = [];
 
-  constructor(private categoriaService: CategoriaService) {
+  constructor(private categoriaService: CategoriaService, private placeService: placeService) {
     this.fieldsForm = new FormGroup({
       name: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
@@ -33,7 +34,22 @@ export class placeComponent implements OnInit {
   }
 
   onSave() {
-    console.log(this.fieldsForm.value);
+    this.fieldsForm.markAllAsTouched();
+
+    if (this.fieldsForm.valid) {
+      this.placeService
+        .save(this.fieldsForm.value).subscribe(
+          {
+            next: (place) => {
+              this.fieldsForm.reset();
+              console.log(place);
+            },
+            error: (error) => {
+              console.log(error);
+            }
+          }
+        );
+    }
   }
 
   isFieldInvalid(campo: string) : boolean {
