@@ -1,41 +1,38 @@
-<div class="w-full p-6">
-  <h1 class="text-2xl font-bold mb-6">Galeria de Lugares</h1>
+<!-- filters  -->
+<div class="p-4 bg-white shadow">
+  <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+    <input type="text" placeholder="Pesquisar pelo nome do local"
+          class="w-full border border-gray-300 rounded p-2 shadow-sm focus:ring focus:ring-400"
+    />
+    <select
+      class="w-full border border-gray-300 rounded p-2 shadow-sm focus:ring focus:ring-400" >
+      <option value="">Todas as categorias</option>
 
-  <div class="text-1xl font-sm mb-1">Categorias</div>
-  <select class="border border-gray-300 rounded px-4 py-2 mb-6">
-    <option value="">Todas as Categorias</option>
-    @for (category of categories; track category.id) {
-      <option value="{{ category.id }}">{{ category.name }}</option>
-    }
-  </select>
+      @for (category of categories; track category.id) {
+        <option value="{{category.name}}">{{category.name}}</option>
+      }
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-    @for (place of places; track place.id) {
-
-      <div
-        class="bg-white rounded-xl shadow hover:shadow-lg transition p-4"
-      >
-        <img
-          [src]="place.urlPhoto"
-          alt="{{ place.name }}"
-          class="w-full h-48 object-cover rounded-lg"
-        />
-
-        <h2 class="text-lg font-semibold mt-3">{{ place.name }}</h2>
-
-        <p class="text-sm text-gray-500">
-          {{ place.category?.name }}
-        </p>
-
-        <p class="text-gray-700 text-sm mt-2 line-clamp-3">
-          {{ place.description }}
-        </p>
-
-        <div class="mt-3 flex items-center gap-1">
-          <span class="text-yellow-500 text-xl">★</span>
-          <span class="text-sm">{{ place.rating }}</span>
-        </div>
-      </div>
-    }
+    </select>
   </div>
+</div>
+
+<!-- gallery  -->
+<div id="placesList" class="p-4 grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  @for(place of places; track place.id) {
+
+    <div class="bg-white shadow rounded overflow-hidden">
+      <img src="{{place.urlPhoto}}" alt="{{place.name}}" class="w-full h-40 object-cover" />
+      <div class="p-4">
+        <h2 class="text-lg font-semibold mb-2">{{place.name}}</h2>
+        <p>Categoria: <span class="text-blue-700">{{place.category}}</span></p>
+        <p>Localização: <span class="text-blue-700">{{place.location}}</span></p>
+        <div>
+          <span class="text-yellow-500">⭐ {{place.rating}}</span>
+          <span class="ml-2 text-gray-600"> {{place.rating}} </span>
+        </div>
+        <p class="text-gray-600">{{place.description}}</p>
+      </div>
+    </div>
+  }
+
 </div>
