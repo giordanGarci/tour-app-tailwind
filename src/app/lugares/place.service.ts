@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Place } from './place';
 import { Observable } from 'rxjs';
@@ -20,9 +20,20 @@ export class PlaceService {
     return this.http.get<Place[]>(this.baseUrl);
   }
 
-  // getByCategory(category: string) : Observable<Place[]> {
-  //   const url = `${this.baseUrl}?categoria=${category}`;
-  //   return this.http.get<Place[]>(url);
-  // }
+  filter(name: string, category: string) : Observable<Place[]> {
+    let params = new HttpParams();
+
+    if (name) {
+      params = params.set('name', name);
+    }
+    if (category) {
+      params = params.set('category', category);
+    }
+    console.log(params.toString());
+
+    return this.http.get<Place[]>(this.baseUrl, {
+       params: params
+    });
+  }
 
 }

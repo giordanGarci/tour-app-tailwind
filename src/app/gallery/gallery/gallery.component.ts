@@ -15,6 +15,8 @@ export class GalleryComponent implements OnInit {
 
   places: Place[] = [];
   categories: Category[] = [];
+  filterName: string = '';
+  filterCategory: string = '';
 
   constructor(private placeService: PlaceService, private categoryService: CategoryService) { }
 
@@ -45,14 +47,14 @@ export class GalleryComponent implements OnInit {
     );
   }
 
-  // filterByCategory(category: string) {
-  //   this.placeService.getByCategory(category).subscribe(
-  //     {
-  //       next: (data) => this.places = data,
-  //       error: (error) => console.log(error)
-  //     }
-  //   );
-  // }
+  filter(){
+    this.placeService.filter(this.filterName, this.filterCategory).subscribe(
+      {
+        next: (data) => this.places = data,
+        error: (error) => console.log(error)
+      }
+    );
+  }
 
 
 
