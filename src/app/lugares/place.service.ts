@@ -24,7 +24,7 @@ export class PlaceService {
     let params = new HttpParams();
 
     if (name) {
-      params = params.set('name', name);
+      params = params.set('name_like', name);
     }
     if (category) {
       params = params.set('category', category);
