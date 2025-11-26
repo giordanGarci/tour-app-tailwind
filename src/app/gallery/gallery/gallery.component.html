@@ -27,8 +27,8 @@
         <p>Categoria: <span class="text-blue-700">{{place.category}}</span></p>
         <p>Localização: <span class="text-blue-700">{{place.location}}</span></p>
         <div>
-          <span class="text-yellow-500">⭐ {{place.rating}}</span>
-          <span class="ml-2 text-gray-600"> {{place.rating}} </span>
+          <span class="text-yellow-500" [innerHTML]="getStars(place.rating ?? 0)"></span>
+          <span class="ml-2 text-gray-600"> {{place.rating ?? 0}} </span>
         </div>
         <p class="text-gray-600">{{place.description}}</p>
       </div>

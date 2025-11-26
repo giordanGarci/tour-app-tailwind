@@ -32,6 +32,10 @@ export class GalleryComponent implements OnInit {
     );
   }
 
+  getStars(rating: number) {
+    return '&#9733;'.repeat(rating || 0) + '&#9734;'.repeat(5 - (rating || 0));
+  }
+
   loadCategories() {
     this.categoryService.getAll().subscribe(
       {
