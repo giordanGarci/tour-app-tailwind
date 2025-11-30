@@ -1,0 +1,21 @@
+<div class="bg-gradient-to-r from-blue-500 to-blue-800 text-white flex flex-col items-center justify-center h-screen">
+  <div class="text-center px-6">
+    <h1 class="text-4xl font-bold mb-4">Welcome to Tour App</h1>
+    <p class="text-lg mb-6">Explore amazing places around the world.</p>
+
+    @if(isLogged()){
+      <button (click)="browse()"
+            class="bg-white text-blue-600 font-semibold px-6 py-3 rounded shadow hover:bg-gray-100 transition">
+        Hello, {{ isLogged() ? profile?.name : 'Guest' }}! Start Exploring
+      </button>
+    }
+
+    @else{
+      <button (click)="loginGoogle()"
+            class="bg-white text-blue-600 font-semibold px-6 py-3 rounded shadow hover:bg-gray-100 transition">
+        <img src="assets/img/icon-google.png" alt="Google Logo" class="inline h-5 w-5 mr-2">
+        {{ isLogged() ? 'Continue with Google' : 'Login with Google' }}
+      </button>
+    }
+  </div>
+</div>
