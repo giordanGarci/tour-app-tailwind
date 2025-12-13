@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Category } from './category';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = 'http://localhost:3000/categorias';
+  baseUrl: string = environment.apiUrl + '/categorias';
 
   save(categoria: Category) : Observable<Category> {
     return this.http.post<Category>(this.baseUrl, categoria);
